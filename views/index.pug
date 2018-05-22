@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Project 10
+    body
+      div(id='createListBox')
+        h2 create lists
+        form(method='POST', action='/createList')
+          input
+      div(id='completeLists')
+        form(method='POST', action='/deleteComplete')
+          button complete marked lists
+      div(id='todoListBox')
+        each list in data
+          div
+            h3= list[].listName.value
+            // This line is going to display the name of the list, I still do not understand interpolation well enough.
+            // I will have to figure out how to pass the information required to make the backend modify the right part of the database.
+            form(method='GET', action='/addTask')
+              button Add Task
+            form(method='POST' action='/markListComplete')
+              button Mark List complete
+            form(method='POST' action='/deleteList')
+              button Delete List
+            div(class='itmes')
+              
+              
+          
+        
