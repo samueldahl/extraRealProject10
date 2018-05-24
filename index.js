@@ -32,7 +32,7 @@ app.get('/', async function (req, res) {
 
 app.post('/createlist', function (req,res){
   console.log(req.body);
-
+  
   res.redirect('/');
 })
 app.post('/clearcompletelists', function (req,res){

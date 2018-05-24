@@ -6,7 +6,7 @@ html
       div(id='createListBox')
         h2 create lists
         form(method='POST', action='/createlist')
-          input
+          input(name='listname', value="", required)
           button Add List
       div(id='completeLists')
         form(method='POST', action='/clearcompletelists')
@@ -21,15 +21,24 @@ html
             // This line is going to display the name of the list, I still do not understand interpolation well enough.
             // I will have to figure out how to pass the information required to make the backend modify the right part of the database.
             form(method='POST', action='/addtask')
+              input(name='taskname', value="", required)
               button Add Task
+              //
             form(method='POST', action='/marklistcomplete')
               button Mark List complete
+              //
             form(method='POST', action='/deletelist')
               button Delete List
+              //
             div(class='items')
+              //Was potentialy going to add in an id, but I don't know how that would react to spaces.
               each task in list.tasks
                 span= task.name
                   form(method='POST', action='/marktaskcomplete')
                     button Mark Task Complete
+                    //
                   form(method='POST', action='/deletetask')
                     button Delete Task
+                    //
+
+//- input(name='name', value=user.name, required)
