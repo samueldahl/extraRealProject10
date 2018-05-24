@@ -1,0 +1,25 @@
+{
+  "name": "extrarealproject10",
+  "version": "1.0.0",
+  "description": "Dab On Them Hatas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samueldahl/extraRealProject10.git"
+  },
+  "author": "Nathanal Gathrak, eater of memes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samueldahl/extraRealProject10/issues"
+  },
+  "homepage": "https://github.com/samueldahl/extraRealProject10#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.0-beta4",
+    "pug": "^2.0.3"
+  }
+}

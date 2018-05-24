@@ -6,13 +6,13 @@
       {
         "name":"Do my lame school project",
         "complete":false
-      }
+      },
       {
         "name":"Play videogames",
         "complete":true
       }
     ]
-  }
+  },
   {
     "listName":"Todo When My Stuff Is Done",
     "complete":false,
@@ -20,7 +20,7 @@
       {
         "name":"Date hot chicks",
         "complete":false,
-      }
+      },
       {
         "name":"Dab on HATERS",
         "complete":true
