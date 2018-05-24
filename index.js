@@ -20,19 +20,20 @@ MongoClient.connect(process.env.DB_URL ? process.env.DB_URL : 'mongodb://localho
   if (err) throw err;
   db = client.db(process.env.DB_NAME ? process.env.DB_NAME : 'todo');
   db.collection('todo').find();
-  // that was getting obnoxious.
 });
 
-// The below chunk of code will connect you to the base page and render the todo list.
 app.get('/', async function (req, res) {
   var obj = await db.collection('todo').find().toArray();
   res.render('index', {data: obj});
   console.log('Index page request fulfilled');
 });
 
-app.post('/createlist', function (req,res){
+app.post('/createlist', async function (req,res){
   console.log(req.body);
-  
+  let data = {"listName":"","complete":false,"tasks":[]};
+  data.listName = req.body.listName;
+  await db.collection('todo').insert(data);
+
   res.redirect('/');
 })
 app.post('/clearcompletelists', function (req,res){

@@ -2,11 +2,12 @@ doctype html
 html
   head
     title Project 10
+    style #hide{display:none}
     body
       div(id='createListBox')
         h2 create lists
         form(method='POST', action='/createlist')
-          input(name='listname', value="", required)
+          input(name='listName', value="", required)
           button Add List
       div(id='completeLists')
         form(method='POST', action='/clearcompletelists')
