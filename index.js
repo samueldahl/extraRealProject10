@@ -38,12 +38,39 @@ app.post('/createlist', async function (req,res){
 })
 app.post('/clearcompletelists', function (req,res){
   console.log(req.body);
-
+  db.collection('todo').remove(
+    {
+      'complete': true
+    }
+  )
   res.redirect('/');
 })
 app.post('/clearcompletetasks', function (req,res){
   console.log(req.body);
-
+  /*db.collection('todo').update(
+    {},
+    {
+      $pull:{
+        'tasks.$[elem]':""
+      }
+    },
+    {
+      arrayFilters: [
+        {
+          'elem.complete':true
+        }
+      ]
+    }
+  );*/
+  db.collection('todo').update({}, {
+    $pull: {
+      tasks: {
+        complete: true
+      }
+    }
+  }, {
+    multi: true
+  });
   res.redirect('/');
 })
 
