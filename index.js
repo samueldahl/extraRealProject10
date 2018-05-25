@@ -49,7 +49,12 @@ app.post('/clearcompletetasks', function (req,res){
 
 app.post('/addtask', function (req,res){
   console.log(req.body);
-
+  //search by -id, insert into the tasks.
+  var newtask = {"name":req.body.taskname, "complete":false}
+  db.collection('todo').update(
+    {_id: ObjectID(req.body.location)},
+    {$push:{"tasks":newtask }}
+  );
   res.redirect('/');
 })
 app.post('/marklistcomplete', function (req,res){

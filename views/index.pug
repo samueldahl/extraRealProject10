@@ -19,27 +19,27 @@ html
         each list in data
           div
             h3= list.listName
-            // This line is going to display the name of the list, I still do not understand interpolation well enough.
-            // I will have to figure out how to pass the information required to make the backend modify the right part of the database.
             form(method='POST', action='/addtask')
               input(name='taskname', value="", required)
+              input(name='location', value=list._id, required style='display: none;')
               button Add Task
-              //
             form(method='POST', action='/marklistcomplete')
+              input(name='location', value=list._id, required style='display: none;')
               button Mark List complete
-              //
             form(method='POST', action='/deletelist')
+              input(name='location', value=list._id, required style='display: none;')
               button Delete List
-              //
             div(class='items')
               //Was potentialy going to add in an id, but I don't know how that would react to spaces.
               each task in list.tasks
                 span= task.name
                   form(method='POST', action='/marktaskcomplete')
+                    input(name='location', value=list._id, required, style='display: none;')
+                    input(name='taskName', value=task.name, required, style='display: none;')
                     button Mark Task Complete
-                    //
                   form(method='POST', action='/deletetask')
+                    input(name='location', value=list._id, required, style='display: none;')
+                    input(name='taskName', value=task.name, required, style='display: none;')
                     button Delete Task
-                    //
 
 //- input(name='name', value=user.name, required)
