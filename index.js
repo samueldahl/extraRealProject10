@@ -64,7 +64,8 @@ app.post('/marklistcomplete', function (req,res){
 })
 app.post('/deletelist', function (req,res){
   console.log(req.body);
-
+  db.collection('todo').remove(
+    {_id: ObjectID(req.body.location)});
   res.redirect('/');
 })
 
@@ -75,7 +76,10 @@ app.post('/marktaskcomplete', function (req,res){
 })
 app.post('/deletetask', function (req,res){
   console.log(req.body);
-
+  db.collection('todo').update(
+    {_id: ObjectID(req.body.location)},
+    {$pull:{"tasks":{"name":req.body.taskName} }}
+  );
   res.redirect('/');
 })
 
