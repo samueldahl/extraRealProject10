@@ -59,7 +59,10 @@ app.post('/addtask', function (req,res){
 })
 app.post('/marklistcomplete', function (req,res){
   console.log(req.body);
-
+  db.collection('todo').update(
+    {_id: ObjectID(req.body.location)},
+    {$set:{"complete":true }}
+  );
   res.redirect('/');
 })
 app.post('/deletelist', function (req,res){
@@ -71,7 +74,21 @@ app.post('/deletelist', function (req,res){
 
 app.post('/marktaskcomplete', function (req,res){
   console.log(req.body);
-
+  db.collection('todo').update(
+    {_id:ObjectID(req.body.location)},
+    {
+      $set:{
+        'tasks.$[elem].complete':true
+      }
+    },
+    {
+      arrayFilters: [
+        {
+          'elem.name': req.body.taskName
+        }
+      ]
+    }
+  );
   res.redirect('/');
 })
 app.post('/deletetask', function (req,res){
